@@ -142,17 +142,15 @@ string tiempo(float segundos){
 	}
 	return ss.str();
 }
-__int64 inicioN(string inicio){
-	stringstream ss;
-	ss << inicio;
-	__int64 n =atoi(ss.str().c_str());
-	if(n%2 == 0)n--;
-	return n;
+__int64 inicioN(__int64 inicio){
+	if(inicio%2 == 0)inicio--;
+	return inicio;
 }
 int main() {
 	nthreads = std::thread::hardware_concurrency();
 	primos = new ListaLigada[nthreads];
-    string nombre,inicio;
+    string nombre;
+    __int64 inicio;
     cout<<"Cuantos numeros primos desea encontrar?: ";
     cin>>encontrar;
     cout<<"Ingrese el nombre del fichero de salida: ";
