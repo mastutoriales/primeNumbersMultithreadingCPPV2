@@ -56,14 +56,21 @@ void run(){
         }
 	}
 }
-void generarPrimos(){
+
+
+int limite(int cantidad, __int64 ultimo){
+	return (int)(3.528*pow((__int64)cantidad+(__int64)(0.2*pow(ultimo,0.937)),0.5266))+1;
+	
+}
+
+void generarPrimos(int limite){
 	primosN = ListaLigada();
 	primosN.agregar(2);
 	primosN.agregar(3);
 	primosN.agregar(5);
 	int max;
 	bool flag;
-	for(int i = 7; i<=131071;i++){
+	for(int i = 7; i<=limite;i++){
 		max= maximo(i);
 		flag = true;
 		Nodo* t = primosN.head;
@@ -158,7 +165,7 @@ int main() {
     cout<<"Ingrese el numero de inicio: ";
 	cin>>inicio;
 	u = inicioN(inicio);
-	generarPrimos();
+	generarPrimos(limite(encontrar,u));
 	cout<<"Busqueda Iniciada"<<endl;
 	clock_t busquedai = clock();
 	thread* threadlist = new thread[nthreads];
@@ -179,5 +186,5 @@ int main() {
     cout<<"Tiempo Guardado Primos: "<<tiempo((guardarf - guardari) / (float)CLK_TCK)<<endl;
     cout<<"Tiempo Total: "<<tiempo((guardarf - busquedai) / (float)CLK_TCK)<<endl;
     cout << "Presione ENTER para Salir: ";
-    cin.ignore().get();	
+    cin.ignore().get();
 }

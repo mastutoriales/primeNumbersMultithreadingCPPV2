@@ -14,7 +14,7 @@ class ListaLigada
 	public:
 		friend void run();
 		friend void guardar(std::string);
-		friend void generarPrimos();
+		friend void generarPrimos(int);
 		friend __int64 maxCarga();
 		ListaLigada();
 		~ListaLigada();
