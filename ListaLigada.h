@@ -16,6 +16,7 @@ class ListaLigada
 		friend void guardar(std::string);
 		friend void generarPrimos(int);
 		friend __int64 maxCarga();
+		friend int main();
 		ListaLigada();
 		~ListaLigada();
 		void agregar (__int64);

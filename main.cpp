@@ -18,6 +18,7 @@ __int64 encontrar;
 __int64 encontrados=0;
 __int64 nthreads;
 __int64 u;
+__int64 maxValue;
 Bloqueador semaforo1;
 Bloqueador semaforo2;
 
@@ -94,7 +95,7 @@ bool estaVacia(){
 void guardar(string salida){
 	stringstream ss;
 	__int64 min;
-	__int64 pos;
+	__int64 pos;	
 	while(!estaVacia()){
 		min= 9223372036854775807;
 		pos=-1;
@@ -104,7 +105,8 @@ void guardar(string salida){
 				pos=i;
 			}
 		}
-		ss<<primos[pos].eliminar()<<endl;
+		maxValue = primos[pos].eliminar();
+		ss<<maxValue<<endl;
 	}
 	ofstream fichero;
 	salida+=".txt";
@@ -185,6 +187,8 @@ int main() {
 	cout<<"Tiempo Busqueda Primos: "<<tiempo((busquedaf - busquedai) / (float)CLK_TCK)<<endl;
     cout<<"Tiempo Guardado Primos: "<<tiempo((guardarf - guardari) / (float)CLK_TCK)<<endl;
     cout<<"Tiempo Total: "<<tiempo((guardarf - busquedai) / (float)CLK_TCK)<<endl;
+    if(maximo(maxValue)<= primosN.tail->dato)cout<<"Comprobacion Valida"<<endl;
+	else cout<<"Comprobacion Invalida"<<endl;
     cout << "Presione ENTER para Salir: ";
     cin.ignore().get();
 }
