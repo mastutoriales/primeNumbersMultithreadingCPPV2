@@ -184,9 +184,9 @@ int main() {
 	guardar(nombre);
 	clock_t guardarf = clock();
 	cout<<"Guardado Terminado"<<endl;
-	cout<<"Tiempo Busqueda Primos: "<<tiempo((busquedaf - busquedai) / (float)CLK_TCK)<<endl;
-    cout<<"Tiempo Guardado Primos: "<<tiempo((guardarf - guardari) / (float)CLK_TCK)<<endl;
-    cout<<"Tiempo Total: "<<tiempo((guardarf - busquedai) / (float)CLK_TCK)<<endl;
+	cout<<"Tiempo Busqueda Primos: "<<tiempo((busquedaf - busquedai) / (float)CLOCKS_PER_SEC)<<endl;
+    cout<<"Tiempo Guardado Primos: "<<tiempo((guardarf - guardari) / (float)CLOCKS_PER_SEC)<<endl;
+    cout<<"Tiempo Total: "<<tiempo((guardarf - busquedai) / (float)CLOCKS_PER_SEC)<<endl;
     if(maximo(maxValue)<= primosN.tail->dato)cout<<"Comprobacion Valida"<<endl;
 	else cout<<"Comprobacion Invalida"<<endl;
     cout << "Presione ENTER para Salir: ";
