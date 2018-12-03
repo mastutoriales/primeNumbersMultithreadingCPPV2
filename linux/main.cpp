@@ -1,13 +1,14 @@
 #include <iostream>
-#include <thread>
 #include <sstream>
 #include <fstream>
 #include <cmath>
 #include <cstdio>
 #include <ctime>
 #include <cstdio>
+#include <cstdint>
 #include "ListaLigada.h"
 #include "Bloqueador.h"
+#include <thread>
 
 using namespace std;
 
@@ -17,6 +18,7 @@ ListaLigada primosN;
 int64_t encontrar;
 int64_t encontrados=0;
 int64_t nthreads;
+int nthread=0;
 int64_t u;
 int64_t maxValue;
 Bloqueador semaforo1;
@@ -26,9 +28,10 @@ int64_t maximo(int64_t numero){
     return (int64_t) ceil(sqrt(numero));
 }
 void run(){
-	stringstream ss;
-	ss << this_thread::get_id();
-	int64_t id =atoi(ss.str().c_str())-2;
+	semaforo1.lock();
+	int id=nthread;
+	nthread++;
+	semaforo1.unlock();
 	Nodo *t;
     int64_t m;
     bool primo;
